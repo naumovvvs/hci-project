@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="profileDashboard.css" rel="stylesheet">
+    <title>Profile Dashboard</title>
+  </head>
+  <body>
+    
+    <div class="container" id="editProfileDetails_container" xmlns:th="http://www.thymeleaf.org">
+        <div class="container d-flex justify-content-center" style="background-color: rgb(194, 221, 229);">
+            <h3><b>Edit profile details</b></h3>
+        </div>
+
+        <div class="container d-flex justify-content-center pt-2" style="background-color: rgb(194, 221, 229)">
+            <img src="img/person.jpg" style="width: 200px;" class="rounded-circle">
+        </div>
+
+        <div class="container d-flex justify-content-end" style="background-color: rgb(194, 221, 229);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+        </div>
+
+        <div class="container d-flex justify-content-end" style="background-color: rgb(194, 221, 229);">
+            <p style="font-size: 13px;">Change profile picture</p>
+        </div>
+
+        <div class="container mt-3" >
+            <div class="form-group row">
+                <label for="myDiet" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Diet</label>
+                <div class="col-sm-10">
+                    <button style="width: 300px;" type="button" class="btn btn-primary">Change Diet</button>
+                </div>
+            </div><hr>
+            <div class="form-group row">
+                <label for="nutritionist" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Nutritionist</label>
+                <div class="col-sm-10">
+                  <input type="nutritionist" class="form-control" id="nutritionist" placeholder="John Smith">
+                </div>
+            </div><hr>
+            <div class="form-group row">
+                <label for="weight" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Weight</label>
+                <div class="col-sm-10">
+                  <input type="weight" class="form-control" id="weight" placeholder="120 kg">
+                </div>
+            </div><hr>
+            <div class="form-group row">
+                <label for="height" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Height</label>
+                <div class="col-sm-10">
+                  <input type="height" class="form-control" id="height" placeholder="175 cm">
+                </div>
+            </div><hr>
+            <div class="form-group row">
+                <label for="goals" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Goals</label>
+                <div class="col-sm-10">
+                  <input type="goals" class="form-control" id="goals" placeholder="Lose weight">
+                </div>
+            </div><hr>
+        </div>
+
+        <div class="container d-flex justify-content-center">
+            <button style="width: 100px;" type="button" class="btn btn-primary">Edit</button>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

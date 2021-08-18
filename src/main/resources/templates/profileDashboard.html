@@ -1,0 +1,55 @@
+<div class="container" id="profileDashboard_container" xmlns:th="http://www.thymeleaf.org">
+    <div class="container d-flex justify-content-center" style="background-color: rgb(194, 221, 229);">
+        <h3 class="pt-2"><b>Profile dashboard</b></h3>
+    </div>
+
+    <div class="container d-flex justify-content-center pt-3" style="background-color: rgb(194, 221, 229)">
+        <img src="img/person.jpg" style="width: 200px;" class="rounded-circle">
+    </div>
+
+    <div class="container d-flex justify-content-end" style="background-color: rgb(194, 221, 229);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+        </svg>
+    </div>
+
+    <div class="container d-flex justify-content-end" style="background-color: rgb(194, 221, 229);">
+        <a href="/profile/edit"><p style="font-size: 13px;">Edit info</p></a>
+    </div>
+
+    <div class="container mt-3" >
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">My diet</label>
+            <div class="col-sm-10">
+                <a style="width: 300px;" th:href="@{'/diet/{dietName}' (dietName=${user.diet.dietName})}"
+                   class="btn btn-outline-info" th:text="${user.diet.dietName}"></a>
+            </div>
+        </div><hr>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">My nutritionist</label>
+            <div class="col-sm-10">
+                <a th:href="@{'/profile/{username}' (username=${user.nutritionist.username})}" style="width: 300px;" class="btn btn-outline-info"
+                        th:text="${user.nutritionist.name} + ' ' + ${user.nutritionist.surname} "></a>
+        </div>
+        </div><hr>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Calendar</label>
+            <div class="col-sm-10">
+                <button style="width: 300px;" type="button" class="btn btn-outline-info">View calendar</button>
+            </div>
+        </div><hr>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Friends</label>
+            <div class="col-sm-10">
+                <button style="width: 300px;" type="button" class="btn btn-outline-info">View list</button>
+            </div>
+        </div><hr>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Settings</label>
+            <div class="col-sm-10">
+                <button style="width: 300px;" type="button" class="btn btn-outline-info">View settings</button>
+            </div>
+        </div><hr>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container" id="myDiet_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
+    <div class="container d-flex justify-content-center">
+        <h2><b>My Diet</b></h2>
+    </div>
+
+    <div class="container mt-3">
+        <div class="form-group row mb-3">
+            <label style="font-size: 20px; font-weight: bold;" class="col-sm-2 col-form-label">Diet name</label>
+            <div class="col-sm-10">
+                <a style="width: 300px;" class="btn btn-outline-primary"
+                   th:href="@{'/diet/{dietName}' (dietName=${user.diet.dietName})}" th:text="${user.diet.dietName}"></a>
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label style="font-size: 20px; font-weight: bold;" for="duration" class="col-sm-2 col-form-label">Duration</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="duration" th:value="${user.diet.dietDuration} + ' ' + days" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label style="font-size: 20px; font-weight: bold;" class="col-sm-2 col-form-label">Description</label>
+        </div>
+
+        <div class="form-group row">
+            <p style="border: 1px solid black; line-height: 2; background-color: white;" class="pt-3 pb-3" th:text="${user.diet.dietDescription}"></p>
+        </div>
+    </div>
+
+    <div class="container text-center mt-4">
+        <h3>Change Diet</h3>
+    </div>
+    <div class="container text-center mt-2">
+        <a href="/diet/changeDiet" class="btn btn-primary btn-lg">Choose new diet</a>
+    </div>
+</div>

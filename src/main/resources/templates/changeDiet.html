@@ -1,0 +1,89 @@
+<div class="container" id="changeDiet_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
+    <div class="container text-center pt-3">
+        <h2><b>Change Diet</b></h2>
+        <div class="d-flex justify-content-center"><hr style="width: 300px;"></div>
+    </div>
+    <div class="container text-center mt-4">
+        <h4>Choose from existing diets</h4>
+    </div>
+    <div class="container mb-3 pt-3" style="border: 2px solid lightgrey; border-radius: 6px;">
+        <div class="container text-center recipeType">
+            <div class="flex-rectangle phone"></div>
+            <div class="flex-rectangle toHide"></div>
+            <div class="flex-rectangle toHide"></div>
+            <div class="flex-rectangle toHide"></div>
+
+            <div>
+                <div class="name phone">Diet 1</div>
+                <div class="name toHide"> Diet 2</div>
+                <div class="name toHide">Diet 3</div>
+                <div class="name toHide">Diet 4</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center mt-5">
+        <h4>Custom Diet</h4>
+        <div class="d-flex justify-content-center"><hr style="width: 300px;"></div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                 <label style="font-size: 20px; font-weight: bold;">Age</label>
+            </div>
+            <div class="col-sm-3">
+                <input class="form-control" type="number" th:value="${user.age}">
+            </div>
+            <div class="col-sm-3">
+                <label style="font-size: 20px; font-weight: bold;">Diet type</label>
+           </div>
+           <div class="col-sm-3">
+                <select class="form-control">
+                    <option>Vegan</option>
+                    <option>Normal</option>
+                    <option>Vegetarian</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-sm-3">
+                 <label style="font-size: 20px; font-weight: bold;">Height</label>
+            </div>
+            <div class="col-sm-3">
+                <input class="form-control" type="number" th:value="${user.height}">
+            </div>
+            <div class="col-sm-3">
+                <label style="font-size: 20px; font-weight: bold;">Goals</label>
+           </div>
+           <div class="col-sm-3" style="border: 2px solid lightgray; border-radius: 5px; width: 130px;" >
+                <div>
+                    <input type="checkbox">
+                    <label>Lose weight</label>
+                </div>
+                <div>
+                    <input type="checkbox">
+                    <label>Gain muscle</label>
+                </div>
+                <div>
+                    <input type="checkbox">
+                    <label>Be healthier</label>
+                </div>
+           </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                <label style="font-size: 20px; font-weight: bold;">Weight</label>
+           </div>
+           <div class="col-sm-3">
+               <input class="form-control" type="number" th:value="${user.weight}">
+           </div>
+        </div>
+    </div>
+
+    <div class="container text-center mt-5 pb-5">
+        <button type="button" class="btn btn-primary btn-lg">Find your diet</button>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+.flex-rectangle{
+    width: 10%;
+    height: 170px;
+    border: 2px solid grey;
+    margin-bottom: 2px;
+    padding-bottom: 10px;
+    margin: auto;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.flex-rectangle:before{
+    content: "";
+    display: inline-block;
+    padding-top: 25%;
+}
+
+.recipeType{
+    border: 2px solid lightgrey;
+    border-radius: 6px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+h4{
+    font-style: italic;
+}
+
+@media only screen and (max-width: 640px) {
+    .toHide {
+        display: none;
+    }
+
+    .phone {
+        width: 80%;
+        height: 150px;
+        margin-left: 20px;
+    }
+ 
+ }

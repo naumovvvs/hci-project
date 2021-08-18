@@ -14,6 +14,7 @@ public class Meal extends BaseEntity{
     @Enumerated(value = EnumType.STRING)
     private DietType mealType;
 
+    private String mealName;
     private Float healthyScore;
     private String ingredients;
     private String instructions;
@@ -21,7 +22,8 @@ public class Meal extends BaseEntity{
     public Meal() {
     }
 
-    public Meal(DietType mealType, Float healthyScore, String ingredients, String instructions) {
+    public Meal(String mealName, DietType mealType, Float healthyScore, String ingredients, String instructions) {
+        this.mealName = mealName;
         this.mealType = mealType;
         this.healthyScore = healthyScore;
         this.ingredients = ingredients;

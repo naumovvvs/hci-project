@@ -36,11 +36,14 @@ public class User extends BaseEntity implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    @OneToMany
+    @ManyToMany
     private List<Goal> personalGoals;
 
     @OneToMany
     private List<Post> userPosts;
+
+    @ManyToOne
+    private Diet diet;
 
     @ManyToOne
     private User nutritionist;
