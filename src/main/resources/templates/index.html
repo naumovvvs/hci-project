@@ -1,0 +1,54 @@
+<div class="container" id="login_container" xmlns:th="http://www.thymeleaf.org">
+
+    <div id="groupButtons" class="col-md-6 text-center mt-5 mx-auto">
+
+        <div class="row">
+            <button class="btn btn-lg btn-primary mt-5 mb-2" href="#" id="loginButton">Sign in</button>
+        </div>
+
+        <div class="row">
+            <a class="btn btn-lg btn-primary mt-2 mb-5" href="/register">Sign up</a>
+        </div>
+
+        <div class="row">
+            <h5>OR</h5>
+        </div>
+
+
+        <div class="row">
+            <button type="button" class="btn btn-lg btn-primary mt-5 mb-4">Register via Facebook</button>
+        </div>
+
+        <div class="row">
+            <button type="button" class="btn btn-lg btn-primary">Register via Google</button>
+        </div>
+
+    </div>
+
+    <div id="loginFields" class="col-md-6 text-center mt-5 mx-auto showNone">
+        <h3>Sign in</h3>
+
+        <form method="POST" action="/login" id="loginForm">
+            <div class="input-group mb-3 mt-4">
+                <span class="input-group-text" id="username">Username</span>
+                <input type="text" class="form-control" placeholder="Enter username..." name="username" required>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="password">Password</span>
+                <input type="password" class="form-control" placeholder="Enter password..." name="password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
+    </div>
+
+</div>
+<script>
+    document.getElementById("menu").classList.add("showNone");
+
+    document.getElementById("loginButton").addEventListener("click", function(event) {
+        document.getElementById("groupButtons").classList.add("showNone");
+        document.getElementById("loginFields").classList.remove("showNone");
+    });
+</script>

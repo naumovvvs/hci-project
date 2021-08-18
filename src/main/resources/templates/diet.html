@@ -1,0 +1,39 @@
+<div class="container" id="diet_container" xmlns:th="http://www.thymeleaf.org">
+
+    <div class="row text-center mt-2">
+        <h5>The perfect diet for you...</h5>
+        <h3>Diet Name</h3>
+    </div>
+
+    <h5 class="mt-3">Description</h5>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
+
+        </textarea>
+        <label for="floatingTextarea2">This is the diet description</label>
+    </div>
+
+
+    <h5 class="mt-3">Meals</h5>
+    <ul class="list-group">
+        <li class="list-group-item">Meal 1</li>
+        <li class="list-group-item">Meal 2</li>
+        <li class="list-group-item">Meal 3</li>
+        <li class="list-group-item">Meal 4</li>
+        <li class="list-group-item">Meal 5</li>
+    </ul>
+
+    <div class="row text-center mt-4">
+        <form method="POST" action="/register/diet" id="registerForm">
+            <div class="row">
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary" name="decision" value="yes">Accept diet</button>
+                </div>
+
+                <div class="col-6">
+                    <button type="submit" class="btn btn-danger" name="decision" value="no">Deny diet</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

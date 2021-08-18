@@ -24,53 +24,43 @@ public class LoginController {
     }
 
     @GetMapping
-    public String getLoginPage(@RequestParam(required = false)String error, Model model){
+    public String getIndexPage(@RequestParam(required = false)String error, Model model){
         if(error!=null && !error.isEmpty()){
             model.addAttribute("error", error);
         }
 
         // TODO: CHANGE this
+        // TODO: Hide menu on login screen
 
-//        model.addAttribute("headTitle", "Login");
-//        model.addAttribute("bodyContent", "login");
-//        model.addAttribute("style1", "login.css");
-//        model.addAttribute("style2", "navbar.css");
-//        model.addAttribute("style3", "footer-light.css");
+        model.addAttribute("headTitle", "Diettastic");
+        model.addAttribute("bodyContent", "index");
+        model.addAttribute("style1", "index.css");
+        model.addAttribute("style2", "header.css");
 
         return "master-template";
     }
 
-    @PostMapping("")
+    // TODO: Fix this method
+    @PostMapping
     public String login(@RequestParam String username, @RequestParam String password,
                         HttpServletRequest request, Model model) {
 
         Optional<User> user = Optional.empty();
 
-        // TODO: CHANGE this
-
         try {
-            user = this.userService.login(request.getParameter("username"), request.getParameter("password"));
+            user = this.userService.login(username, password);
         }catch (Exception ex){
-//            model.addAttribute("error", ex.getMessage());
-//            model.addAttribute("headTitle", "Login");
-//            model.addAttribute("style1", "login.css");
-//            model.addAttribute("style2", "navbar.css");
-//            model.addAttribute("style3", "footer-light.css");
-//            model.addAttribute("bodyContent", "login");
+            model.addAttribute("error", ex.getMessage());
+            model.addAttribute("headTitle", "Diettastic - Login");
+            model.addAttribute("style2", "header.css");
+            model.addAttribute("bodyContent", "login");
 
             return "master-template";
         }
 
         if (user.isPresent()) {
-//            model.addAttribute("headTitle", "Home");
-//            model.addAttribute("style1", "navbar.css");
-//            model.addAttribute("style2", "city-slider.css");
-//            model.addAttribute("style3", "footer-light.css");
-//            model.addAttribute("bodyContent", "home-page");
-
             request.getSession().setAttribute("user", user.get());
-
-            return "master-template";
+            return "redirect:/home";
         } else {
             return "redirect:/login";
         }
