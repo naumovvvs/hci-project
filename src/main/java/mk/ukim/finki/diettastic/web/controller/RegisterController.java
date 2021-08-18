@@ -31,12 +31,8 @@ public class RegisterController {
             model.addAttribute("error", error);
         }
 
-        // TODO: CHANGE this
-        // TODO: Hide menu on login screen
-
         model.addAttribute("headTitle", "Diettastic - Register");
         model.addAttribute("bodyContent", "register");
-        model.addAttribute("style1", "register.css");
         model.addAttribute("style2", "header.css");
 
         return "master-template";
@@ -68,12 +64,8 @@ public class RegisterController {
             model.addAttribute("error", error);
         }
 
-        // TODO: CHANGE this
-        // TODO: Hide menu on login screen
-
         model.addAttribute("headTitle", "Diettastic - Register");
         model.addAttribute("bodyContent", "diet");
-        model.addAttribute("style1", "diet.css");
         model.addAttribute("style2", "header.css");
 
         return "master-template";

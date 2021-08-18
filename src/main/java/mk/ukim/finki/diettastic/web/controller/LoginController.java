@@ -29,9 +29,6 @@ public class LoginController {
             model.addAttribute("error", error);
         }
 
-        // TODO: CHANGE this
-        // TODO: Hide menu on login screen
-
         model.addAttribute("headTitle", "Diettastic");
         model.addAttribute("bodyContent", "index");
         model.addAttribute("style1", "index.css");
@@ -40,7 +37,6 @@ public class LoginController {
         return "master-template";
     }
 
-    // TODO: Fix this method
     @PostMapping
     public String login(@RequestParam String username, @RequestParam String password,
                         HttpServletRequest request, Model model) {
@@ -49,7 +45,7 @@ public class LoginController {
 
         try {
             user = this.userService.login(username, password);
-        }catch (Exception ex){
+        }catch (Exception ex) {
             model.addAttribute("error", ex.getMessage());
             model.addAttribute("headTitle", "Diettastic - Login");
             model.addAttribute("style2", "header.css");
