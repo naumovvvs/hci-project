@@ -34,4 +34,9 @@ public class MealServiceImpl implements MealService {
             throw new RuntimeException("Cannot find meal with that name");
         }
     }
+
+    @Override
+    public List<Meal> getAllMeals() {
+        return this.mealRepository.findAll();
+    }
 }

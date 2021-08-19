@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface MealService {
     List<Meal> getAllMealsByType(DietType type);
+    List<Meal> getAllMeals();
     Meal getMealByName(String mealName);
 }

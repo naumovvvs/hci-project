@@ -1,5 +1,6 @@
 package mk.ukim.finki.diettastic.service.impl;
 
+import mk.ukim.finki.diettastic.model.Diet;
 import mk.ukim.finki.diettastic.model.Goal;
 import mk.ukim.finki.diettastic.model.User;
 import mk.ukim.finki.diettastic.model.enums.DietType;
@@ -78,5 +79,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public void updateUser(User currentUser, Diet diet, Float weight, Float height) {
+        if (weight > 0 && weight < 300) {
+            currentUser.setWeight(weight);
+        }
+
+        if (height > 0 && height < 250) {
+            currentUser.setHeight(height);
+        }
+
+        if (!currentUser.getDiet().getDietName().equals(diet.getDietName())) {
+            currentUser.setDiet(diet);
+        }
+
+        this.userRepository.save(currentUser);
     }
 }

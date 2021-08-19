@@ -18,8 +18,6 @@ public class Post extends BaseEntity {
     @ManyToOne
     private User author;
 
-    // TODO: List of images (byte [])
-
     public Post() {
 
     }

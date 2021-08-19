@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 @Controller
@@ -27,13 +28,18 @@ public class DietController {
 
     @GetMapping("/{dietName}")
     public String getDietPageByName(@PathVariable String dietName, Model model) {
-        Optional<Diet> diet = dietRepository.findByDietName(dietName);
+        Optional<Diet> optionalDiet = dietRepository.findByDietName(dietName);
+        DecimalFormat df = new DecimalFormat("###.#");
 
-        if (diet.isPresent()) {
+
+        if (optionalDiet.isPresent()) {
             // TODO: add code
+            Diet diet = optionalDiet.get();
+            diet.setDietRating((Float.parseFloat(df.format(diet.getDietRating()))));
+
             model.addAttribute("headTitle", "Diettastic - Diet");
             model.addAttribute("bodyContent", "dietPage");
-            model.addAttribute("diet", diet.get());
+            model.addAttribute("diet", diet);
             model.addAttribute("style2", "header.css");
             return "master-template";
         } else {

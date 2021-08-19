@@ -1,76 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container" id="addPost_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
+    <div class="container text-center pt-4 mb-3">
+        <h2><b>Add new post</b></h2>
+        <div class="d-flex justify-content-center"><hr style="width: 300px;"></div>
+    </div>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-    <title>Add Post</title>
-  </head>
-  <body>
-    
-    <div class="container" id="addPost_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
-        <div class="container text-center">
-            <h2><b>Add new post</b></h2>
-            <div class="d-flex justify-content-center"><hr style="width: 300px;"></div>
-        </div>
-        
-        <div class="container">
-            <input type="text" class="form-control mb-4" placeholder="Enter post title...">
-        </div>
-
-        <div class="container">
-            <label class="mb-3" style="font-size: 20px; font-weight: bold;">Upload a picture:</label>
-            <input class="form-control form-control-md" id="formFileLg" type="file" />
-        </div>
-         
-        <div class="container mt-3" style="padding-bottom: 500px;" >
+    <form method="POST" action="/home/publishPost">
+        <div class="container mt-3" style="padding-bottom: 30vh;" >
             <div class="form-group row mb-3">
-                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Type</label>
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="title">Title</label>
                 <div class="col-sm-10">
-                    <select class="form-control" style="width: 300px;">
-                        <option>Normal</option>
-                        <option>Vegan</option>
-                        <option>Vegetarian</option>
+                    <input type="text" class="form-control" id="title" placeholder="Enter post title..." name="title">
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="select">Type</label>
+                <div class="col-sm-10">
+                    <select class="form-control" style="width: 300px;" id="select" name="type">
+                        <option value="default">Choose type of recipe...</option>
+                        <option value="normal">Normal</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
                     </select>
                 </div>
             </div>
+
             <div class="form-group row mb-3">
-                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Recipe</label>
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="recipe">Recipe</label>
                 <div class="col-sm-10">
-                    <button style="width: 300px;" type="button" class="btn btn-outline-info">Select recipe...</button>
-            </div>
-            </div>
-            
-            <div class="form-group row mb-3">
-                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Location</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Enter location...">
-            </div>
+                    <select class="form-control" style="width: 300px;" id="recipe" name="recipe">
+                        <option value="default">Choose recipe...</option>
+                        <option th:each="r : ${recipes}"
+                                th:value="${r.mealName}"
+                                th:text="${r.mealName}">
+                    </select>
+                </div>
             </div>
 
             <div class="form-group row mb-3">
-                <label for="settings" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Healthy Score</label>
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="location">Location</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="/ (auto calculation)" disabled>
+                    <input type="text" class="form-control" placeholder="Enter location..." id="location" name="location">
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="score">Healthy Score</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="/ (auto calculation)" id="score" name="score" disabled>
+                </div>
+            </div>
+
+            <div class="container text-center mt-5">
+                <button type="submit" class="btn btn-primary btn-lg">Add post</button>
             </div>
         </div>
-
-        <div class="container text-center mt-5">
-            <button type="button" class="btn btn-primary btn-lg">Add post</button>
-        </div>
-    </div>
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+    </form>
+</div>

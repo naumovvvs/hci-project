@@ -28,6 +28,6 @@ public class Diet extends BaseEntity{
         this.dietDescription = dietDescription;
         this.dietDuration = dietDuration;
         this.numberOfUsers = 0;
-        this.dietRating = 0.0f;
+        this.dietRating =  5 + (float)Math.random() * (10 - 5);
     }
 }

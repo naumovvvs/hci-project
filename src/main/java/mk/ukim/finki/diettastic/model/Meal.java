@@ -18,15 +18,19 @@ public class Meal extends BaseEntity{
     private Float healthyScore;
     private String ingredients;
     private String instructions;
+    private String image1;
+    private String image2;
 
     public Meal() {
     }
 
-    public Meal(String mealName, DietType mealType, Float healthyScore, String ingredients, String instructions) {
+    public Meal(String mealName, DietType mealType, Float healthyScore, String ingredients, String instructions, String image1, String image2) {
         this.mealName = mealName;
         this.mealType = mealType;
         this.healthyScore = healthyScore;
         this.ingredients = ingredients;
         this.instructions = instructions;
+        this.image1 = image1;
+        this.image2 = image2;
     }
 }

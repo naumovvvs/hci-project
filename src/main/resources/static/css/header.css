@@ -1,3 +1,7 @@
 .showNone {
     display: none;
 }
+
+.footerBackColor {
+    background-color: #eeeeee;
+}

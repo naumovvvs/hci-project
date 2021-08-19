@@ -1,5 +1,6 @@
 package mk.ukim.finki.diettastic.service;
 
+import mk.ukim.finki.diettastic.model.Diet;
 import mk.ukim.finki.diettastic.model.User;
 import mk.ukim.finki.diettastic.model.enums.DietType;
 import mk.ukim.finki.diettastic.model.enums.Role;
@@ -18,6 +19,7 @@ public interface UserService extends UserDetailsService {
     Optional<User> findById(Long userId);
     boolean checkIfUsernameExists(String username);
     Optional<User> findByUsername(String username);
+    void updateUser(User currentUser, Diet diet, Float weight, Float height);
 
     @Override
     default UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

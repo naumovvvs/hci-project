@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="profileDashboard.css" rel="stylesheet">
-    <title>Profile Dashboard</title>
-  </head>
-  <body>
-    
-    <div class="container" id="editProfileDetails_container" xmlns:th="http://www.thymeleaf.org">
+<div class="container" id="editProfileDetails_container" xmlns:th="http://www.thymeleaf.org">
+    <form method="POST" action="/profile/editInfo">
         <div class="container d-flex justify-content-center" style="background-color: rgb(194, 221, 229);">
             <h3><b>Edit profile details</b></h3>
         </div>
@@ -34,49 +22,53 @@
 
         <div class="container mt-3" >
             <div class="form-group row">
-                <label for="myDiet" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Diet</label>
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Diet</label>
                 <div class="col-sm-10">
-                    <button style="width: 300px;" type="button" class="btn btn-primary">Change Diet</button>
+                    <select class="form-select" name="diet">
+                        <option selected th:value="${user.diet.dietName}" th:text="${user.diet.dietName}"></option>
+                        <option th:each="d : ${diets}"
+                                th:value="${d.dietName}"
+                                th:text="${d.dietName}">
+                    </select>
                 </div>
             </div><hr>
             <div class="form-group row">
                 <label for="nutritionist" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Nutritionist</label>
+
+                <!-- When nutritionist exists -->
+                <div class="col-sm-10" th:if="${user.nutritionist != null}">
+                    <input  type="nutritionist" class="form-control mb-2" id="nutritionist"
+                           th:value="${user.nutritionist.name} + ' ' + ${user.nutritionist.surname}" disabled>
+                    <a href="/profile/removeNutritionist" style="text-decoration: none !important; color: red; cursor: pointer;">
+                      <button type="button" class="btn-close" aria-label="Close"></button>
+                      <label style="cursor: pointer">Remove nutritionist</label>
+                    </a>
+                </div>
+
+                <!-- When nutritionist doesn't exist -->
+                <div class="col-sm-10" th:if="${user.nutritionist == null}">
+                    <input type="nutritionist" class="form-control mb-2" id="nutritionist"
+                           placeholder="No nutritionist selected" disabled>
+                </div>
+
+            </div><hr>
+            <div class="form-group row">
+                <label for="weight" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Weight in kg</label>
                 <div class="col-sm-10">
-                  <input type="nutritionist" class="form-control" id="nutritionist" placeholder="John Smith">
+                  <input type="number" class="form-control" id="weight" name="weight" th:value="${user.weight}">
                 </div>
             </div><hr>
             <div class="form-group row">
-                <label for="weight" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Weight</label>
+                <label for="height" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Height in cm</label>
                 <div class="col-sm-10">
-                  <input type="weight" class="form-control" id="weight" placeholder="120 kg">
-                </div>
-            </div><hr>
-            <div class="form-group row">
-                <label for="height" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Height</label>
-                <div class="col-sm-10">
-                  <input type="height" class="form-control" id="height" placeholder="175 cm">
-                </div>
-            </div><hr>
-            <div class="form-group row">
-                <label for="goals" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Goals</label>
-                <div class="col-sm-10">
-                  <input type="goals" class="form-control" id="goals" placeholder="Lose weight">
+                  <input type="number" class="form-control" id="height" name="height" th:value="${user.height}">
                 </div>
             </div><hr>
         </div>
 
         <div class="container d-flex justify-content-center">
-            <button style="width: 100px;" type="button" class="btn btn-primary">Edit</button>
+            <button style="width: 100px;" type="submit" class="btn btn-success mr-3">Edit</button>
+            <a href="/profile" style="width: 100px;" type="button" class="btn btn-primary">Back</a>
         </div>
-    </div>
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+    </form>
+</div>
