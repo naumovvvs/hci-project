@@ -18,6 +18,7 @@ public interface UserService extends UserDetailsService {
                             Role role, List<String> goals);
     Optional<User> findById(Long userId);
     boolean checkIfUsernameExists(String username);
+    List<User> getAllFriends();
     Optional<User> findByUsername(String username);
     void updateUser(User currentUser, Diet diet, Float weight, Float height);
 

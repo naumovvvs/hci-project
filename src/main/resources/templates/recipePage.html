@@ -1,64 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container" id="recipePage_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
+    <div class="container d-flex justify-content-center pt-3 pb-2">
+        <h2 style="font-weight: bold" th:text="${recipe.mealName}"></h2>
+    </div>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <div class="container mb-2" style="display:flex; justify-content:center; width: auto; height: 250px;">
+        <img th:src="${recipe.image1}" class="img-thumbnail" style="max-height: 250px">
+    </div>
 
-    <title>Recipe Page</title>
-  </head>
-  <body>
-    <div class="container" id="recipePage_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
-        <div class="container d-flex justify-content-center">
-            <h2><b>Recipe Name</b></h2>
-        </div>
-
-        <div class="container" style="background-color: white; border: 1px solid black; width: 300px; height: 150px;"></div>
-
-        <div class="container mt-3">
-            <div class="form-group row mb-3">
-                <label style="font-size: 20px; font-weight: bold;" for="type" class="col-sm-2 col-form-label">Type</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="type" placeholder="Vegan" disabled>
-                </div>
-            </div>
-            <div class="form-group row mb-3">
-                <label style="font-size: 20px; font-weight: bold;" for="type" class="col-sm-2 col-form-label">Healthy score</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="score" placeholder="9.6 &#9733" disabled>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label style="font-size: 20px; font-weight: bold;" for="ingredients" class="col-sm-2 col-form-label">Ingredients</label>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <p style="border: 1px solid black; line-height: 2; padding-left: 5px; height: 100px; background-color: white;" class="pb-3">These are the ingredients needed for making the recipe...</p>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label style="font-size: 20px; font-weight: bold;" for="instructions" class="col-sm-2 col-form-label">Instructions</label>
-            </div>
-            <div class="form-group row mb-3">
-                <div class="col-sm-10">
-                    <p style="border: 1px solid black; line-height: 2; padding-left: 5px; height: 100px; background-color: white;" class="pb-3">These are the instructions for making the recipe...</p>
-                </div>
+    <div class="container mt-3">
+        <div class="form-group row mb-3">
+            <label style="font-size: 20px; font-weight: bold;" for="type" class="col-sm-2 col-form-label">Type</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="type" th:value="${recipe.mealType}" disabled>
             </div>
         </div>
-        <div class="container text-center">
-            <button type="button" class="btn btn-primary btn-lg" disabled>Print recipe</button>
+        <div class="form-group row mb-3">
+            <label style="font-size: 20px; font-weight: bold;" for="type" class="col-sm-2 col-form-label">Healthy score</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="score" th:value="${recipe.healthyScore + ' &#9733'}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label style="font-size: 20px; font-weight: bold;" class="col-sm-2 col-form-label">Ingredients</label>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="i : ${ingredients}" th:text="${i}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label style="font-size: 20px; font-weight: bold;" class="col-sm-2 col-form-label">Instructions</label>
+        </div>
+        <div class="form-group row mb-3">
+            <div class="col-sm-10">
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="i : ${instructions}" th:text="${i}"></li>
+                </ul>
+            </div>
         </div>
     </div>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <div class="container text-center mb-5">
+        <button type="button" onclick="message()" class="btn btn-primary btn-lg">Print recipe</button>
+    </div>
+</div>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
-    -->
-  </body>
-</html>
+<script>
+    function message() {
+        console.log("TEST");
+        alert("Recipe sent to printer for printing!")
+    }
+</script>

@@ -46,6 +46,6 @@ public class PostServiceImpl implements PostService {
         User author = userService.findByUsername("test").get();
         Meal meal = mealService.getMealByName(recipe);
 
-        return postRepository.save(new Post(title, location, meal.getHealthyScore(), author));
+        return postRepository.save(new Post(title, location, author, meal));
     }
 }

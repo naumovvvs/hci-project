@@ -1,7 +1,9 @@
 package mk.ukim.finki.diettastic.web.controller;
 
 import mk.ukim.finki.diettastic.model.Meal;
+import mk.ukim.finki.diettastic.model.Post;
 import mk.ukim.finki.diettastic.service.MealService;
+import mk.ukim.finki.diettastic.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,17 +18,27 @@ import java.util.List;
 public class HomepageController {
 
     private final MealService mealService;
+    private final PostService postService;
 
-    public HomepageController(MealService mealService) {
+    public HomepageController(MealService mealService, PostService postService) {
         this.mealService = mealService;
+        this.postService = postService;
     }
 
     @GetMapping
     public String getHomePage(Model model) {
+        List<Post> allPosts = this.postService.getAllPosts();
+
+        if(allPosts.isEmpty() || allPosts.size() == 0) {
+            allPosts = null;
+        }
+
         model.addAttribute("headTitle", "Diettastic");
         model.addAttribute("bodyContent", "homepage");
+        model.addAttribute("posts", allPosts);
         model.addAttribute("style1", "homepage.css");
         model.addAttribute("style2", "header.css");
+        model.addAttribute("style3", "button.css");
 
         return "master-template";
     }
@@ -56,7 +68,7 @@ public class HomepageController {
     public String publishPost(@RequestParam String title, @RequestParam String type,
                               @RequestParam String recipe, @RequestParam String location) {
 
-        // TODO: Finish logic
+        this.postService.publishPost(title, type, recipe, location);
 
         return "redirect:/home";
     }

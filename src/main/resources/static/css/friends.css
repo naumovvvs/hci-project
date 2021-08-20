@@ -1,5 +1,6 @@
 .flex-rectangle{
     width: 40%;
+    height: 140px;
     margin-bottom: 2px;
     padding-bottom: 10px;
     margin: auto;
@@ -11,4 +12,8 @@
 }
 .container .row{
     background-color: white;
+}
+
+button{
+    margin-top: 5px;
 }

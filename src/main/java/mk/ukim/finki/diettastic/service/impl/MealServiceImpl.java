@@ -30,7 +30,6 @@ public class MealServiceImpl implements MealService {
         if (meal.isPresent()) {
             return meal.get();
         } else {
-            // TODO: error page
             throw new RuntimeException("Cannot find meal with that name");
         }
     }

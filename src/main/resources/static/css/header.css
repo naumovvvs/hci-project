@@ -3,5 +3,7 @@
 }
 
 .footerBackColor {
-    background-color: #eeeeee;
+    background-color: #212529;
+    color: white;
+    text-decoration: none !important;
 }

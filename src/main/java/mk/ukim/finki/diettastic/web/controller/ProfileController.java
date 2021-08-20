@@ -58,7 +58,6 @@ public class ProfileController {
 
     @GetMapping("/{username}")
     public String getProfileByName(@PathVariable String username, Model model) {
-        // TODO: SHOW PUBLIC DATA ONLY
         Optional<User> user = this.userService.findByUsername(username);
 
         if (user.isPresent()) {
@@ -69,8 +68,7 @@ public class ProfileController {
 
             return "master-template";
         } else {
-            // TODO: Make error page
-            return "";
+            return "redirect:/home";
         }
     }
 
@@ -99,5 +97,22 @@ public class ProfileController {
         }
 
         return "redirect:/profile/edit";
+    }
+
+    @GetMapping("/friends")
+    public String getFriendsPage(Model model) {
+        List<User> list = this.userService.getAllFriends();
+
+        if (list==null || list.isEmpty()) {
+            list = null;
+        }
+
+        model.addAttribute("headTitle", "Diettastic - Friends");
+        model.addAttribute("bodyContent", "friends");
+        model.addAttribute("style1", "friends.css");
+        model.addAttribute("style2", "header.css");
+        model.addAttribute("list", list);
+
+        return "master-template";
     }
 }

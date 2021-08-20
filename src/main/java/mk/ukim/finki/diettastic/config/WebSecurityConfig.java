@@ -22,13 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/", "/**", "/home", "/about-us", "/contact", "/register", "/register/**", "/city/**",
-                        "/place/**", "/assets/**", "/css/**", "/img/**", "/img/uploaded/**", "/video/**", "/api/**",
-                        "/svg/**", "/home/notifications", "/js/**", "https://**", "http://**", "www.facebook.com/**",
-                        "/messages/**").permitAll()
-
-                .antMatchers("/dashboard/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
+                .antMatchers("/", "/**", "/home", "/register", "/register/**",
+                        "/css/**", "/img/**", "/svg/**", "/home/notifications", "/js/**").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
@@ -39,10 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .clearAuthentication(true)
                 .invalidateHttpSession(true)
-                .deleteCookies("macvilla-cookie")
-                .logoutSuccessUrl("/home")
-                .and()
-                .exceptionHandling().accessDeniedPage("/access-denied");
+                .deleteCookies("diettastic-cookie")
+                .logoutSuccessUrl("/home");
     }
 
     @Override
@@ -57,7 +50,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .password(passwordEncoder.encode("admin"))
 //                .authorities("ROLE_ADMIN");
 
-        // TODO: Authentication with provider, persistence in postgresql
         auth.authenticationProvider(customAuthenticationProvider);
     }
 

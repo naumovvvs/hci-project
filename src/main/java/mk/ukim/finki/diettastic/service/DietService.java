@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface DietService {
     List<Diet> getAllDiets();
     Optional<Diet> getDietByName(String dietName);
+    void changeDiet(String dietName);
+    Diet calculateDietForUser(String username);
 }

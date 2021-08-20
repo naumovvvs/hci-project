@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -74,10 +75,14 @@ public class RecipeController {
     @GetMapping("/{recipeName}")
     public String getRecipePage(@PathVariable String recipeName, Model model) {
         Meal recipe = this.mealService.getMealByName(recipeName);
+        List<String> ingredients = Arrays.asList(recipe.getIngredients().split("/"));
+        List<String> instructions = Arrays.asList(recipe.getInstructions().split("/"));
 
         model.addAttribute("headTitle", "Diettastic - Recipe");
         model.addAttribute("bodyContent", "recipePage");
         model.addAttribute("recipe", recipe);
+        model.addAttribute("ingredients", ingredients);
+        model.addAttribute("instructions", instructions);
         model.addAttribute("style2", "header.css");
 
         return "master-template";

@@ -1,5 +1,5 @@
 body {
-    background-color: #86BBD8;
+    background-color: #f8f9fa;
 }
 
 button {
@@ -8,4 +8,8 @@ button {
 
 .showNone {
     display: none;
+}
+
+#login_container {
+    margin-bottom: 100px;
 }

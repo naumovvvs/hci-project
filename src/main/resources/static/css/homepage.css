@@ -1,19 +1,46 @@
+body{
+    background-color: #f8f9fa;
+}
+
 .post {
-    padding: 2%;
-    border: 1px solid grey;
-    border-radius: 15px;
+    padding: 5%;
+    border: 1px solid #adb5bd;
+    border-radius: 20px;
+    background-color: #ced4da;
 }
 
 .postImage {
-    width: 100vh;
-    height: 20vh;
-    border-radius: 10px;
-    background-color: grey;
+    max-height: 25vh;
+    margin-right: 50px;
+    margin-bottom: 30px;
 }
 
-.healthyScore {
+.healthyScore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    width: 20vh;
-    height: 20vh;
+    width: 25vh;
+    height: 25vh;
     background-color: green;
+    vertical-align: middle;
+}
+
+.green {
+    background-color: green;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.red {
+    background-color: darkred;
+}
+
+#noPosts {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

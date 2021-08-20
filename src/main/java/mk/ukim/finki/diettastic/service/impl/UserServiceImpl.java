@@ -97,4 +97,12 @@ public class UserServiceImpl implements UserService {
 
         this.userRepository.save(currentUser);
     }
+
+    @Override
+    public List<User> getAllFriends() {
+        // TODO: Username fixed for testing only
+        User user = this.userRepository.findByUsername("test").get();
+
+        return user.getFriendsList();
+    }
 }

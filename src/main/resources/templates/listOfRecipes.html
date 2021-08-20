@@ -1,55 +1,22 @@
 <div class="container pt-3" id="myDiet_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
 
     <div class="container text-center">
-        <h2><b>[Category Name]</b></h2>
+        <h2 id="pageTitle"><b>[Category Name]</b></h2>
     </div>
 
-    <div class="container mb-3" style="border: 2px solid lightgray; border-radius: 6px;">
+    <div th:each="r : ${recipes}" class="container mb-3" style="border: 2px solid lightgray; border-radius: 6px;">
         <div class="row" style="padding-left: 70px; padding-top: 10px;">
             <div class="col pt-3 pb-3">
-                <label style="font-size: 20px; font-weight: bold;">Recipe 1</label><br>
-                <label style="font-size: 20px; font-weight: bold;">Healthy score: 9.5</label><br>
-                <button type="button" class="btn btn-primary btn-sm">Read more...</button>
+                <label style="font-size: 20px; font-weight: bold;" th:text="${r.mealName}"></label><br>
+                <label style="font-size: 20px; font-weight: bold;">Healthy score: <th:block th:text="${r.healthyScore}"></th:block></label><br>
+                <a th:href="@{'/recipes/{name}' (name=${r.mealName})}" class="btn btn-primary btn-sm">Read more...</a>
             </div>
             <div class="col pt-2 pb-3">
-                <div class="flex-rectangle"></div>
-            </div>
-        </div>
-    </div>
-    <div class="container mb-3" style="border: 2px solid lightgray; border-radius: 6px;">
-        <div class="row" style="padding-left: 70px; padding-top: 10px;">
-            <div class="col pt-3 pb-3">
-                <label style="font-size: 20px; font-weight: bold;">Recipe 2</label><br>
-                <label style="font-size: 20px; font-weight: bold;">Healthy score: 6.4</label><br>
-                <button type="button" class="btn btn-primary btn-sm">Read more...</button>
-            </div>
-            <div class="col pt-2 pb-3">
-                <div class="flex-rectangle"></div>
-            </div>
-        </div>
-    </div>
-    <div class="container mb-3" style="border: 2px solid lightgray; border-radius: 6px;">
-        <div class="row" style="padding-left: 70px; padding-top: 10px;">
-            <div class="col pt-3 pb-3">
-                <label style="font-size: 20px; font-weight: bold;">Recipe 3</label><br>
-                <label style="font-size: 20px; font-weight: bold;">Healthy score: 6.2</label><br>
-                <button type="button" class="btn btn-primary btn-sm">Read more...</button>
-            </div>
-            <div class="col pt-2 pb-3">
-                <div class="flex-rectangle"></div>
-            </div>
-        </div>
-    </div>
-    <div class="container mb-3" style="border: 2px solid lightgray; border-radius: 6px;">
-        <div class="row" style="padding-left: 70px; padding-top: 10px;">
-            <div class="col pt-3 pb-3">
-                <label style="font-size: 20px; font-weight: bold;">Recipe 4</label><br>
-                <label style="font-size: 20px; font-weight: bold;">Healthy score: 9.0</label><br>
-                <button type="button" class="btn btn-primary btn-sm">Read more...</button>
-            </div>
-            <div class="col pt-2 pb-3">
-                <div class="flex-rectangle"></div>
+                <div class="flex-rectangle">
+                    <img th:src="${r.image1}" style="max-height: 140px;" class="img-thumbnail">
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script src="js/listOfRecipes.js"></script>

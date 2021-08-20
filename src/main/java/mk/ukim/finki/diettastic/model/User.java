@@ -25,7 +25,6 @@ public class User extends BaseEntity implements UserDetails {
     private String surname;
     private String birthdayString;
     private String avatarURL;
-    // TODO: Age is automatically calculated
     private Integer age;
     private Float height;
     private Float weight;

@@ -1,7 +1,6 @@
 .flex-rectangle{
-    width: 10%;
+    width: 200px;
     height: 170px;
-    border: 2px solid grey;
     margin-bottom: 2px;
     padding-bottom: 10px;
     margin: auto;
@@ -9,11 +8,15 @@
     margin-right: 20px;
 }
 
+img{
+    width: 200px;
+    height: 170px;
+}
+
 .name {
-    width: 10%;
-    
+    width: 15%;
+    font-weight: bold;
     margin-bottom: 2px;
-    
     margin: auto;
     display: inline-block;
     margin-right: 20px;

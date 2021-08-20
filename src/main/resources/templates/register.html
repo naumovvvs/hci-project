@@ -1,122 +1,116 @@
-<div class="container" id="register_container" xmlns:th="http://www.thymeleaf.org">
+<div class="container" id="register_container" xmlns:th="http://www.thymeleaf.org" style="width: 60%;">
   <form method="POST" action="/register" id="registerForm">
 
-  <h5 class="mt-2 text-center">Registration Info</h5>
-
-  <div class="input-group mb-3 mt-4">
-    <span class="input-group-text" id="username">Username</span>
-    <input type="text" class="form-control" placeholder="Enter username..." name="username" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="password">Password</span>
-    <input type="password" class="form-control" placeholder="Enter password..." name="password" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="email">E-mail</span>
-    <input type="email" class="form-control" placeholder="Enter valid e-mail..." name="email" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="name">Name</span>
-    <input type="text" class="form-control" placeholder="Enter your name..." name="name" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="surname">Surname</span>
-    <input type="text" class="form-control" placeholder="Enter your surname..." name="surname" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text">Birthday</span>
-    <input type="date" class="form-control" placeholder="Enter your birthday..." id="birthday" name="birthday" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <input type="file" class="form-control" id="fileUpload" name="file">
-    <label class="input-group-text" for="fileUpload">Profile Picture</label>
-  </div>
-
-
-  <!-- Second screen -->
-  <div class="input-group mb-3">
-    <span class="input-group-text">Age</span>
-    <input type="number" class="form-control" placeholder="Enter your age..." id="age" name="age" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="height">Height</span>
-    <input type="number" class="form-control" placeholder="Enter your height in cm..." name="height" required>
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="weight">Weight</span>
-    <input type="number" class="form-control" placeholder="Enter your weight..." name="weight" required>
-  </div>
-
-
-  <!-- Third screen -->
-  <div class="input-group mb-3">
-    <label class="input-group-text" for="dietType">Diet Type</label>
-    <select class="form-select" id="dietType" name="dietType" required>
-      <option selected>Choose...</option>
-      <option value="NORMAL">Normal</option>
-      <option value="VEGAN">Vegan</option>
-      <option value="VEGETARIAN">Vegetarian</option>
-      <option value="PESCETARIAN">Pescetarian</option>
-      <option value="OTHER">Other</option>
-    </select>
-  </div>
-
-  <div>
-    <h5 class="mt-4">Type of user</h5>
-
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="ROLE_BASIC" required>
-      <label class="form-check-label" for="flexRadioDefault1">
-        Normal user
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="ROLE_NUTRITIONIST" required>
-      <label class="form-check-label" for="flexRadioDefault2">
-        Nutritionist
-      </label>
+  <h3 class="mt-2 text-center">Registration Info</h3>
+  <div class="row">
+    <div class="input-group mb-3 mt-4">
+      <span class="input-group-text" id="username">Username</span>
+      <input type="text" class="form-control" placeholder="Enter username..." name="username" required>
     </div>
 
-  </div>
-
-
-  <div class="mt-3 mb-3">
-    <h5>Goals</h5>
-
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="lose_weight" id="loseWeight" name="goals">
-      <label class="form-check-label" for="loseWeight">
-        Lose weight
-      </label>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="password">Password</span>
+      <input type="password" class="form-control" placeholder="Enter password..." name="password" required>
     </div>
 
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="gain_muscle" id="gainMuscle" name="goals">
-      <label class="form-check-label" for="gainMuscle">
-        Gain muscle
-      </label>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="email">E-mail</span>
+      <input type="email" class="form-control" placeholder="Enter valid e-mail..." name="email" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="name">Name</span>
+      <input type="text" class="form-control" placeholder="Enter your name..." name="name" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="surname">Surname</span>
+      <input type="text" class="form-control" placeholder="Enter your surname..." name="surname" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text">Birthday</span>
+      <input type="date" class="form-control" placeholder="Enter your birthday..." id="birthday" name="birthday" required>
+    </div>
+
+    <!-- Second screen -->
+    <div class="input-group mb-3">
+      <span class="input-group-text">Age</span>
+      <input type="number" class="form-control" placeholder="Enter your age..." id="age" name="age" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="height">Height</span>
+      <input type="number" class="form-control" placeholder="Enter your height in cm..." name="height" required>
+    </div>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="weight">Weight</span>
+      <input type="number" class="form-control" placeholder="Enter your weight..." name="weight" required>
     </div>
 
 
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="be_healthier" id="beHealthier" name="goals">
-      <label class="form-check-label" for="beHealthier">
-        Be healthier
-      </label>
+    <!-- Third screen -->
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="dietType">Diet Type</label>
+      <select class="form-select" id="dietType" name="dietType" required>
+        <option selected>Choose...</option>
+        <option value="NORMAL">Normal</option>
+        <option value="VEGAN">Vegan</option>
+        <option value="VEGETARIAN">Vegetarian</option>
+        <option value="PESCETARIAN">Pescetarian</option>
+        <option value="OTHER">Other</option>
+      </select>
     </div>
+
+    <div>
+      <h5 class="mt-4">Type of user</h5>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="ROLE_BASIC" required>
+        <label class="form-check-label" for="flexRadioDefault1">
+          Normal user
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="ROLE_NUTRITIONIST" required>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Nutritionist
+        </label>
+      </div>
+
+    </div>
+
+
+    <div class="mt-3 mb-3">
+      <h5>Goals</h5>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="lose_weight" id="loseWeight" name="goals">
+        <label class="form-check-label" for="loseWeight">
+          Lose weight
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="gain_muscle" id="gainMuscle" name="goals">
+        <label class="form-check-label" for="gainMuscle">
+          Gain muscle
+        </label>
+      </div>
+
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="be_healthier" id="beHealthier" name="goals">
+        <label class="form-check-label" for="beHealthier">
+          Be healthier
+        </label>
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Submit</button>
   </div>
-
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-
   </form>
 </div>
 

@@ -1,0 +1,26 @@
+<div class="container" id="friends_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
+
+    <div class="container text-center">
+        <h2 style="font-weight: bold;">Friends</h2>
+    </div>
+
+    <div class="container mb-3" style="border: 2px solid lightgray; border-radius: 6px;" th:if="${friends == null}" >
+        <div class="row text-center" style="padding-top: 10px;">
+            <h2 class="text-center">No friends yet</h2>
+        </div>
+    </div>
+
+    <div class="container mb-3" style="border: 2px solid lightgray; border-radius: 6px;" th:if="${friends != null}" th:each="f : ${friends}">
+        <div class="row" style="padding-left: 70px; padding-top: 10px;">
+            <div class="col pt-3 pb-3 mt-3">
+                <label style="font-size: 20px; font-weight: bold;" th:text="${f.name + ' ' + f.surname}"></label><br>
+                <button type="button" class="btn btn-primary btn-sm">Read more...</button>
+            </div>
+            <div class="col pt-2 pb-3 d-flex justify-content-center">
+                <img class="flex-rectangle" src="img/person.jpg"/>
+            </div>
+        </div>
+    </div>
+
+
+</div>
