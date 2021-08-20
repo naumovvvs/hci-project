@@ -1,0 +1,54 @@
+<div class="container" id="recipePage_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
+    <div class="container d-flex justify-content-center pt-3 pb-2">
+        <h2 style="font-weight: bold" th:text="${recipe.mealName}"></h2>
+    </div>
+
+    <div class="container mb-2" style="display:flex; justify-content:center; width: auto; height: 250px;">
+        <img th:src="${recipe.image1}" class="img-thumbnail" style="max-height: 250px">
+    </div>
+
+    <div class="container mt-3">
+        <div class="form-group row mb-3">
+            <label style="font-size: 20px; font-weight: bold;" for="type" class="col-sm-2 col-form-label">Type</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="type" th:value="${recipe.mealType}" disabled>
+            </div>
+        </div>
+        <div class="form-group row mb-3">
+            <label style="font-size: 20px; font-weight: bold;" for="type" class="col-sm-2 col-form-label">Healthy score</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="score" th:value="${recipe.healthyScore + ' &#9733'}" disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label style="font-size: 20px; font-weight: bold;" class="col-sm-2 col-form-label">Ingredients</label>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="i : ${ingredients}" th:text="${i}"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label style="font-size: 20px; font-weight: bold;" class="col-sm-2 col-form-label">Instructions</label>
+        </div>
+        <div class="form-group row mb-3">
+            <div class="col-sm-10">
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="i : ${instructions}" th:text="${i}"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center mb-5">
+        <button type="button" onclick="message()" class="btn btn-primary btn-lg">Print recipe</button>
+        <a href="/recipes" class="btn btn-secondary btn-lg">Back</a>
+    </div>
+</div>
+
+<script>
+    function message() {
+        alert("Recipe sent to printer for printing!")
+    }
+</script>

@@ -1,0 +1,87 @@
+<div class="container" id="addPost_container" xmlns:th="http://www.thymeleaf.org" style="background-color: rgb(247, 247, 247);">
+    <div class="container text-center pt-4 mb-3">
+        <h2><b>Add new post</b></h2>
+        <div class="d-flex justify-content-center"><hr style="width: 300px;"></div>
+    </div>
+
+
+    <form method="POST" action="/home/publishPost" id="form" name="form">
+        <div class="container mt-3" style="padding-bottom: 30vh;" >
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="title">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" placeholder="Enter post title..." name="title" required>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="select">Type</label>
+                <div class="col-sm-10">
+                    <select class="form-control" style="width: 300px;" id="select" name="type" required>
+                        <option value="default">Choose type of recipe...</option>
+                        <option value="normal">Normal</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="recipe">Recipe</label>
+                <div class="col-sm-10">
+                    <select class="form-control" style="width: 300px;" id="recipe" name="recipe" required>
+                        <option value="default" id="default" alt="/ (auto calculation)">Choose recipe...</option>
+                        <option th:each="r : ${recipes}"
+                                th:value="${r.mealName}"
+                                th:id="${r.mealName}"
+                                th:alt="${r.healthyScore}"
+                                th:text="${r.mealName}">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="location">Location</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter location..." id="location" name="location" required>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;" for="score">Healthy Score</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="/ (auto calculation)" id="score" name="score" disabled>
+                </div>
+            </div>
+
+            <div class="container text-center mt-5">
+                <button type="submit" class="btn btn-primary btn-lg">Add post</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.getElementById("recipe").onchange = changeListener;
+    document.getElementById("form").onsubmit = submitListener;
+
+    function changeListener(){
+        var value = this.value;
+        var healthyScore = document.getElementById(value).getAttribute("alt").valueOf();
+
+        document.getElementById("score").value = healthyScore;
+    }
+
+    function submitListener(event) {
+        event.preventDefault();
+
+        var recipeSelected = document.getElementById("recipe").value;
+        var typeSelected = document.getElementById("select").value;
+
+        if (recipeSelected !== "default" && typeSelected !== "default") {
+           document.form.submit();
+        } else {
+            alert("Please select Type and Recipe!")
+        }
+    }
+</script>

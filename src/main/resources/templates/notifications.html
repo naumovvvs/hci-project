@@ -1,0 +1,35 @@
+<div class="container pt-3" id="notifications_container" xmlns:th="http://www.thymeleaf.org">
+
+  <div class="row text-center mt-3 mb-4">
+    <h3>Notifications</h3>
+  </div>
+
+  <div class="row m-2">
+    <div class="alert alert-info" role="alert">
+      Reminder - Drink water
+      <div style="float: right">
+        <button type="button" class="btn-close notification" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-2">
+    <div class="alert alert-success" role="alert">
+      John Smith liked your post...
+      <div style="float: right">
+        <button type="button" class="btn-close notification" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let elementsArray = document.querySelectorAll(".notification");
+
+  elementsArray.forEach(function(elem) {
+    elem.addEventListener("click",  event => {
+      event.target.previousSibling.parentNode.parentNode.parentNode.classList.add("showNone");
+    });
+  });
+</script>

@@ -1,0 +1,74 @@
+
+<div class="container" id="editProfileDetails_container" xmlns:th="http://www.thymeleaf.org">
+    <form method="POST" action="/profile/editInfo">
+        <div class="container d-flex justify-content-center pt-3" style="background-color: rgb(194, 221, 229);">
+            <h3><b>Edit profile details</b></h3>
+        </div>
+
+        <div class="container d-flex justify-content-center pt-2" style="background-color: rgb(194, 221, 229)">
+            <img src="img/person.jpg" style="width: 200px;" class="rounded-circle">
+        </div>
+
+        <div class="container d-flex justify-content-end" style="background-color: rgb(194, 221, 229);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+        </div>
+
+        <div class="container d-flex justify-content-end" style="background-color: rgb(194, 221, 229);">
+            <p style="font-size: 13px;">Change profile picture</p>
+        </div>
+
+        <div class="container mt-3" >
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Diet</label>
+                <div class="col-sm-10">
+                    <select class="form-select" name="diet">
+                        <option selected th:value="${user.diet.dietName}" th:text="${user.diet.dietName}"></option>
+                        <option th:each="d : ${diets}"
+                                th:value="${d.dietName}"
+                                th:text="${d.dietName}">
+                    </select>
+                </div>
+            </div><hr>
+            <div class="form-group row">
+                <label for="nutritionist" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Nutritionist</label>
+
+                <!-- When nutritionist exists -->
+                <div class="col-sm-10" th:if="${user.nutritionist != null}">
+                    <input  type="nutritionist" class="form-control mb-2" id="nutritionist"
+                           th:value="${user.nutritionist.name} + ' ' + ${user.nutritionist.surname}" disabled>
+                    <a href="/profile/removeNutritionist" style="text-decoration: none !important; color: red; cursor: pointer;">
+                      <button type="button" class="btn-close" aria-label="Close"></button>
+                      <label style="cursor: pointer">Remove nutritionist</label>
+                    </a>
+                </div>
+
+                <!-- When nutritionist doesn't exist -->
+                <div class="col-sm-10" th:if="${user.nutritionist == null}">
+                    <input type="nutritionist" class="form-control mb-2" id="nutritionist"
+                           placeholder="No nutritionist selected" disabled>
+                </div>
+
+            </div><hr>
+            <div class="form-group row">
+                <label for="weight" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Weight in kg</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="weight" name="weight" th:value="${user.weight}">
+                </div>
+            </div><hr>
+            <div class="form-group row">
+                <label for="height" class="col-sm-2 col-form-label" style="font-size: 20px; font-weight: bold;">Height in cm</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="height" name="height" th:value="${user.height}">
+                </div>
+            </div><hr>
+        </div>
+
+        <div class="container d-flex justify-content-center">
+            <button style="width: 100px;" type="submit" class="btn btn-success">Edit</button>
+            <a href="/profile" style="width: 100px;" type="button" class="btn btn-primary">Back</a>
+        </div>
+    </form>
+</div>

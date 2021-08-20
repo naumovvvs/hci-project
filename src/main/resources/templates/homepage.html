@@ -1,0 +1,104 @@
+<div class="container pt-3" id="homepage_container" xmlns:th="http://www.thymeleaf.org">
+
+  <div class="row text-center mt-2 mb-3">
+    <h2>Homepage</h2>
+    <hr>
+  </div>
+
+  <div th:if="${posts==null}">
+    <div class="row container post text-center" id="noPosts">
+      <div class="col-lg-12">
+        <h3>No posts yet...</h3>
+        <h4>
+          <a href="/home/addPost" class="btn btn-outline-success" style="text-decoration: none;">Add new post</a>
+        </h4>
+      </div>
+    </div>
+  </div>
+
+  <div th:if="${posts!=null}" th:each="p : ${posts}" class="container post mb-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <h5 th:text="${p.author.name + ' ' + p.author.surname}"></h5>
+        <h6 th:text="${p.postTimestamp}" id="timeStamp" th:name="timeStamp"></h6>
+      </div>
+
+      <div class="col-lg-5">
+        <h3 th:text="${p.postName}"></h3>
+      </div>
+
+      <div class="col-lg-2">
+        <h5 style="display: inline" th:text="${p.location}"></h5>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-geo-alt mb-2" viewBox="0 0 16 16" style="display: inline;">
+          <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+          <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="row ml-1 mt-1">
+      <div class="col-lg-4 postImage">
+        <img th:src="${p.meal.image1}" style="height: 25vh;" class="img-thumbnail" alt=""/>
+      </div>
+
+      <div class="col-lg-4 postImage mr-2">
+        <img th:src="${p.meal.image2}" style="height: 25vh;" class="img-thumbnail" alt=""/>
+      </div>
+
+      <div class="col-lg-4 healthyScore text-center">
+        <h1 style="color: white" id="scoreText" th:text="${p.meal.healthyScore}"></h1>
+        <h6 style="color: white">Healthy score</h6>
+      </div>
+    </div>
+
+    <div class="row" id="secondRow">
+      <div class="col-12 likeButton">
+        <button class="button dark">
+          <div class="hand">
+            <div class="thumb"></div>
+          </div>
+          <span>Like<span>d</span></span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  var arr = document.getElementsByName("timeStamp");
+
+  arr.forEach(element => {
+    var array = element.innerText.split("T");
+
+    var arr1 = array[0].split("-");
+    var year = arr1[0];
+    var month = arr1[1]-1;
+    var day = arr1[2];
+
+    var arr2 = array[1].split(":");
+
+    var startTime = new Date(year, month, day, arr2[0], arr2[1], 0, 0);
+
+    var endTime = new Date();
+    var timeDiff = endTime - startTime; //in ms
+    // strip the ms
+    timeDiff /= 1000;
+
+    // get seconds
+    // console.log(startTime);
+    // console.log(endTime);
+    var seconds = Math.round(timeDiff);
+    //console.log(seconds + " seconds");
+
+    var result = seconds/3600;
+
+    if(result >= 1) {
+      element.innerText = (result).toFixed(0) + " h ago";
+    } else {
+      element.innerText = (seconds/60).toFixed(0) + " min ago";
+    }
+  });
+</script>
+<script src="js/button.js"></script>

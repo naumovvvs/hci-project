@@ -27,5 +27,7 @@ public class Diet extends BaseEntity{
         this.dietName = dietName;
         this.dietDescription = dietDescription;
         this.dietDuration = dietDuration;
+        this.numberOfUsers = 0;
+        this.dietRating =  5 + (float)Math.random() * (10 - 5);
     }
 }

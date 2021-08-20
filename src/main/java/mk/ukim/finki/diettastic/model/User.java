@@ -25,11 +25,9 @@ public class User extends BaseEntity implements UserDetails {
     private String surname;
     private String birthdayString;
     private String avatarURL;
-    // TODO: Age is automatically calculated
     private Integer age;
     private Float height;
     private Float weight;
-    private boolean isNutritionist;
 
     @Enumerated(value = EnumType.STRING)
     private DietType dietType;
@@ -37,11 +35,14 @@ public class User extends BaseEntity implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    @OneToMany
+    @ManyToMany
     private List<Goal> personalGoals;
 
     @OneToMany
     private List<Post> userPosts;
+
+    @ManyToOne
+    private Diet diet;
 
     @ManyToOne
     private User nutritionist;
@@ -53,7 +54,8 @@ public class User extends BaseEntity implements UserDetails {
     }
 
     public User(String username, String password, String email, String name, String surname, String birthdayString,
-                String avatarURL) {
+                String avatarURL, Integer age, Float height, Float weight, DietType dietType,
+                Role role, List<Goal> personalGoals) {
 
         this.username = username;
         this.password = password;
@@ -62,6 +64,12 @@ public class User extends BaseEntity implements UserDetails {
         this.surname = surname;
         this.birthdayString = birthdayString;
         this.avatarURL = avatarURL;
+        this.age = age;
+        this.height = height;
+        this.weight = weight;
+        this.dietType = dietType;
+        this.role = role;
+        this.personalGoals = personalGoals;
     }
 
     @Override
